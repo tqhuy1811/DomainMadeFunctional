@@ -23,6 +23,7 @@ namespace DomainMadeFunctional
 		
 		private UnitQuantity(int amount) : base(0, "Unit")
 		{
+			
 			Amount = amount;
 		}
 		
@@ -53,7 +54,17 @@ namespace DomainMadeFunctional
 
 		public static Result<KilogramQuantity> Of(double amount)
 		{
-			return null;
+			if (amount <= 0d)
+			{
+				return Result<KilogramQuantity>.Fail(new ValidationError("Kilogram Quantity can not be negative"));
+			}
+
+			if (amount >= 1000d)
+			{
+				return Result<KilogramQuantity>.Fail(new ValidationError("Kilogram Quantity can not be more than 1000"));
+			}
+			
+			return Result<KilogramQuantity>.Ok(new KilogramQuantity(amount));
 		}
 
 	}

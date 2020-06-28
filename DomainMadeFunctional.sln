@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional", "DomainMadeFunctional\DomainMadeFunctional.csproj", "{2A33A068-FABA-4348-93E5-A89B3FE75F58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Core", "DomainMadeFunctional.Core\DomainMadeFunctional.Core.csproj", "{2A33A068-FABA-4348-93E5-A89B3FE75F58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Application", "DomainMadeFunctional.Application\DomainMadeFunctional.Application.csproj", "{7D644040-7B3D-467E-835F-F966D964613F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Repository", "DomainMadeFunctional.Repository\DomainMadeFunctional.Repository.csproj", "{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +16,13 @@ Global
 		{2A33A068-FABA-4348-93E5-A89B3FE75F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A33A068-FABA-4348-93E5-A89B3FE75F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A33A068-FABA-4348-93E5-A89B3FE75F58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D644040-7B3D-467E-835F-F966D964613F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D644040-7B3D-467E-835F-F966D964613F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D644040-7B3D-467E-835F-F966D964613F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D644040-7B3D-467E-835F-F966D964613F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
