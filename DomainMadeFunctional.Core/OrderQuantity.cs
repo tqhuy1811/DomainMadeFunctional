@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Linq;
 using DomainMadeFunctional.Errors;
 using Huy.Framework.Types;
 
@@ -5,29 +7,30 @@ namespace DomainMadeFunctional
 {
 	public abstract class OrderQuantity
 	{
-		public int Value { get; }
+		public int EnumValue { get; }
 		public string DisplayName { get; }
+		public abstract decimal Value { get; }
 
 		protected OrderQuantity(
-			int value,
+			int enumValue,
 			string displayName)
 		{
-			Value = value;
+			EnumValue = enumValue;
 			DisplayName = displayName;
 		}
 	}
 	
 	public class UnitQuantity : OrderQuantity
 	{
-		public int Amount { get; }
-		
-		private UnitQuantity(int amount) : base(0, "Unit")
+		public override decimal Value { get; }
+
+		private UnitQuantity(decimal amount) : base(0, "Unit")
 		{
 			
-			Amount = amount;
+			Value = amount;
 		}
 		
-		public static Result<UnitQuantity> Of(int amount)
+		public static Result<UnitQuantity> Of(decimal amount)
 		{
 			if (amount < 1)
 			{
@@ -38,6 +41,11 @@ namespace DomainMadeFunctional
 			{
 				return Result<UnitQuantity>.Fail(new ValidationError("Unit Quantity can not be more than 1000"));
 			}
+
+			if (int.TryParse(amount.ToString(CultureInfo.CurrentCulture), out var _) == false)
+			{
+				return Result<UnitQuantity>.Fail(new ValidationError("Unit Quantity has to be a whole number"));
+			}
 			
 			return Result<UnitQuantity>.Ok(new UnitQuantity(amount));
 		}
@@ -45,21 +53,21 @@ namespace DomainMadeFunctional
 
 	public class KilogramQuantity : OrderQuantity
 	{
-		public double Amount { get; }
+		public override decimal Value { get; }
 
-		private KilogramQuantity(double amount) : base(1, "Kilogram")
+		private KilogramQuantity(decimal amount) : base(1, "Kilogram")
 		{
-			Amount = amount;
+			Value = amount;
 		}
 
-		public static Result<KilogramQuantity> Of(double amount)
+		public static Result<KilogramQuantity> Of(decimal amount)
 		{
-			if (amount <= 0d)
+			if (amount <= 0m)
 			{
 				return Result<KilogramQuantity>.Fail(new ValidationError("Kilogram Quantity can not be negative"));
 			}
 
-			if (amount >= 1000d)
+			if (amount >= 1000m)
 			{
 				return Result<KilogramQuantity>.Fail(new ValidationError("Kilogram Quantity can not be more than 1000"));
 			}

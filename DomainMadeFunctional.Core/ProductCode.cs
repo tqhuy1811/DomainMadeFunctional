@@ -6,7 +6,7 @@ namespace DomainMadeFunctional
 {
 	public abstract class ProductCode
 	{
-		public abstract string Code { get; }
+		public abstract string Value { get; }
 		public int EnumValue { get; }
 		public string DisplayName { get; }
 		
@@ -26,7 +26,7 @@ namespace DomainMadeFunctional
 			int enumValue,
 			string displayName) : base(enumValue, displayName)
 		{
-			Code = code;
+			Value = code;
 		}
 
 		public static Result<WidgetCode> Of(string code)
@@ -44,7 +44,7 @@ namespace DomainMadeFunctional
 			
 		}
 
-		public override string Code { get; }
+		public override string Value { get; }
 	}
 
 	public class GizmoCode : ProductCode
@@ -54,7 +54,7 @@ namespace DomainMadeFunctional
 			int enumValue,
 			string displayName) : base(enumValue, displayName)
 		{
-			Code = code;
+			Value = code;
 		}
 
 		public static Result<GizmoCode> Of(string code)
@@ -72,6 +72,6 @@ namespace DomainMadeFunctional
 			return Result<GizmoCode>.Ok(new GizmoCode(code: code, enumValue: 1, displayName: "WidgetCode"));
 		}
 
-		public override string Code { get; }
+		public override string Value { get; }
 	}
 }

@@ -8,17 +8,22 @@ namespace DomainMadeFunctional.Application
 {
 	public static partial class Validate
 	{
-		public static CheckProductCodeExists CheckProductCodeExists => (
-			GetProductCode getProductCode,
-			string productCode) =>
+		public static CheckProductCodeExists CheckProductCodeExists (
+			GetProductCode getProductCode)
 		{
-			return getProductCode().BindAsyncLeft(codes => CheckProductCodeExistsLocalFunc(codes, productCode));
-
-			static Result<bool> CheckProductCodeExistsLocalFunc(ProductCode[] codes,
-				string code)
+			return (ProductCode productCode) =>
 			{
-				return Result<bool>.Ok(codes.Any(c => c.Code == code));
-			}
-		};
+				return getProductCode()
+					.Bind(codes => CheckProductCodeExistsLocalFunc(codes, productCode));
+
+				static Result<bool> CheckProductCodeExistsLocalFunc(
+					ProductCode[] codes,
+					ProductCode code)
+				{
+					return Result<bool>.Ok(codes.Any(c => c.Value == code.Value));
+				}
+			};
+
+		}
 	}
 }
