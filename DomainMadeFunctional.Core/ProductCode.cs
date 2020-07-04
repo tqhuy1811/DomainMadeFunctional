@@ -1,10 +1,11 @@
+using System;
 using System.Text.RegularExpressions;
 using DomainMadeFunctional.Errors;
 using Huy.Framework.Types;
 
 namespace DomainMadeFunctional
 {
-	public abstract class ProductCode
+	public abstract class ProductCode: IEquatable<ProductCode>
 	{
 		public abstract string Value { get; }
 		public int EnumValue { get; }
@@ -16,6 +17,26 @@ namespace DomainMadeFunctional
 		{
 			EnumValue = enumValue;
 			DisplayName = displayName;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (ReferenceEquals(this, obj)) return true;
+			if (obj.GetType() != this.GetType()) return false;
+			return Equals((ProductCode) obj);
+		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(EnumValue, DisplayName, Value);
+		}
+
+		public bool Equals(ProductCode other)
+		{
+			if (ReferenceEquals(null, other)) return false;
+			if (ReferenceEquals(this, other)) return true;
+			return EnumValue == other.EnumValue && DisplayName == other.DisplayName && Value == other.Value;
 		}
 	}
 	

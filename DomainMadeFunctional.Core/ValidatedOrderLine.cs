@@ -2,7 +2,7 @@ namespace DomainMadeFunctional
 {
 	public class ValidatedOrderLine
 	{
-		public ValidatedOrderLine(
+		internal ValidatedOrderLine(
 			ProductCode productCode,
 			OrderQuantity orderQuantity)
 		{

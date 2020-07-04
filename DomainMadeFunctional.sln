@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Repository", "DomainMadeFunctional.Repository\DomainMadeFunctional.Repository.csproj", "{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMadeFunctional.Core.Test", "DomainMadeFunctional.Core.Test\DomainMadeFunctional.Core.Test.csproj", "{74BCA188-A1F5-4183-A6F0-769290195CD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE110E0C-DAF9-4F69-80BD-029FDE83BA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BCA188-A1F5-4183-A6F0-769290195CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BCA188-A1F5-4183-A6F0-769290195CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BCA188-A1F5-4183-A6F0-769290195CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BCA188-A1F5-4183-A6F0-769290195CD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

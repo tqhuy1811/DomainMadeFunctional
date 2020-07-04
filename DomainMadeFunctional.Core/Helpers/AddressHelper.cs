@@ -13,7 +13,7 @@ namespace DomainMadeFunctional.Helpers
 			UnvalidatedAddress address)
 		{
 			return exists(address)
-				.Bind((isAddressExistResult) => ToAddressLocalFunc(isAddressExistResult, address));
+				.Bind(isAddressExistResult => ToAddressLocalFunc(isAddressExistResult, address));
 			
 			static Result<ValidatedAddress> ToAddressLocalFunc(
 				bool isAddressExistResult,

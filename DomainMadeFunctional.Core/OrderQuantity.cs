@@ -32,12 +32,12 @@ namespace DomainMadeFunctional
 		
 		public static Result<UnitQuantity> Of(decimal amount)
 		{
-			if (amount < 1)
+			if (amount < 1m)
 			{
 				return Result<UnitQuantity>.Fail(new ValidationError("Unit Quantity can not be negative"));
 			}
 
-			if (amount > 1000)
+			if (amount > 1000m)
 			{
 				return Result<UnitQuantity>.Fail(new ValidationError("Unit Quantity can not be more than 1000"));
 			}
