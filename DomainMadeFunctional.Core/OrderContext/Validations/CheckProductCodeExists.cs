@@ -1,11 +1,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DomainMadeFunctional.Errors;
-using DomainMadeFunctional.Repository;
+using DomainMadeFunctional.OrderContext.Domain;
+using DomainMadeFunctional.OrderContext.Repository;
 using Huy.Framework.Functions;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional.Validations
+namespace DomainMadeFunctional.OrderContext.Validations
 {
 	public delegate Task<Result<bool>> CheckProductCodeExists(
 		ProductCode productCode);

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using DomainMadeFunctional.Errors;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional.Validations
+namespace DomainMadeFunctional.OrderContext.Validations
 {
 	public delegate Task<Result<bool>> CheckAddressExists(UnvalidatedAddress address);
 	

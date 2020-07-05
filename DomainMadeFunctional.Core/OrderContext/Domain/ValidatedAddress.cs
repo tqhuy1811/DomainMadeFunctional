@@ -1,4 +1,4 @@
-namespace DomainMadeFunctional
+namespace DomainMadeFunctional.OrderContext.Domain
 {
 	public class ValidatedAddress
 	{
@@ -6,7 +6,7 @@ namespace DomainMadeFunctional
 		public string Address2 { get; }
 		public string Address3 { get; }
 		
-		internal ValidatedAddress(
+		public ValidatedAddress(
 			string address1,
 			string address2,
 			string address3)

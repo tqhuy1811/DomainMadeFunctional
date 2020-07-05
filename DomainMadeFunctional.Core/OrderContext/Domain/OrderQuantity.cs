@@ -1,9 +1,8 @@
 using System.Globalization;
-using System.Linq;
 using DomainMadeFunctional.Errors;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional
+namespace DomainMadeFunctional.OrderContext.Domain
 {
 	public abstract class OrderQuantity
 	{

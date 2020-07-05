@@ -1,9 +1,10 @@
 using System;
 using DomainMadeFunctional.Errors;
+using DomainMadeFunctional.OrderContext.Domain;
 using Huy.Framework.Functions;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional.Validations
+namespace DomainMadeFunctional.OrderContext.Validations
 {
 	public delegate Result<OrderQuantity> CheckQuantityValid(ProductCode code,
 		decimal amount);

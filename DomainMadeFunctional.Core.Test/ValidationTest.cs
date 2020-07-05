@@ -1,7 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using DomainMadeFunctional.Helpers;
-using DomainMadeFunctional.Validations;
+using DomainMadeFunctional.OrderContext;
+using DomainMadeFunctional.OrderContext.Domain;
+using DomainMadeFunctional.OrderContext.Helpers;
+using DomainMadeFunctional.OrderContext.Validations;
 using Huy.Framework.Types;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -42,7 +44,7 @@ namespace DomainMadeFunctional.Core.Test
 		public async Task CheckProductCodeExists_ValidProductCode_True()
 		{
 			var validateResult =
-				await Validate.CheckProductCodeExists(MockProductCode)(Helpers.ProductCodeHelper.ToProductCode("G124KC").Data);
+				await Validate.CheckProductCodeExists(MockProductCode)(ProductCodeHelper.ToProductCode("G124KC").Data);
 
 			Assert.AreEqual(true, validateResult.Success);
 			Assert.AreEqual(true, validateResult.Data);
@@ -52,7 +54,7 @@ namespace DomainMadeFunctional.Core.Test
 		public async Task CheckProductCodeExists_InvalidValidProductCode_False()
 		{
 			var validateResult =
-				await Validate.CheckProductCodeExists(MockProductCode)(Helpers.ProductCodeHelper.ToProductCode("G123KC").Data);
+				await Validate.CheckProductCodeExists(MockProductCode)(ProductCodeHelper.ToProductCode("G123KC").Data);
 
 			Assert.AreEqual(true, validateResult.Failure);
 		}
@@ -60,8 +62,8 @@ namespace DomainMadeFunctional.Core.Test
 		[TestMethod]
 		public async Task CheckProductCodeExists_InvalidValidProductCode_Exception()
 		{
-			await Assert.ThrowsExceptionAsync<InvalidOperationException>(() => Validate.CheckProductCodeExists(MockProductCode)(Helpers
-				.ProductCodeHelper.ToProductCode("122C").Data));
+			await Assert.ThrowsExceptionAsync<InvalidOperationException>(() =>
+				Validate.CheckProductCodeExists(MockProductCode)(ProductCodeHelper.ToProductCode("122C").Data));
 		}
 
 		[TestMethod]
@@ -69,12 +71,12 @@ namespace DomainMadeFunctional.Core.Test
 		{
 			var validationResult = await Validate.CheckOrderLineValid(
 				Validate.CheckProductCodeExists(MockProductCode),
-				Validate.CheckQuantityValid,
-				new UnvalidatedOrderLine
-				{
-					Amount = 100,
-					ProductCode = "ssss"
-				});
+				Validate.CheckQuantityValid
+			)(new UnvalidatedOrderLine
+			{
+				Amount = 100,
+				ProductCode = "ssss"
+			});
 			Assert.AreEqual(true, validationResult.Failure);
 			Assert.AreEqual("Invalid Product Code", validationResult.Error.Message);
 		}
@@ -84,7 +86,7 @@ namespace DomainMadeFunctional.Core.Test
 		{
 			var validationResult = await Validate.CheckOrderLineValid(
 				Validate.CheckProductCodeExists(MockProductCode),
-				Validate.CheckQuantityValid,
+				Validate.CheckQuantityValid)(
 				new UnvalidatedOrderLine
 				{
 					Amount = 100,
@@ -99,7 +101,7 @@ namespace DomainMadeFunctional.Core.Test
 		{
 			var validationResult = await Validate.CheckOrderLineValid(
 				Validate.CheckProductCodeExists(MockProductCode),
-				Validate.CheckQuantityValid,
+				Validate.CheckQuantityValid)(
 				new UnvalidatedOrderLine
 				{
 					Amount = 100.12m,
@@ -114,7 +116,7 @@ namespace DomainMadeFunctional.Core.Test
 		{
 			var validationResult = await Validate.CheckOrderLineValid(
 				Validate.CheckProductCodeExists(MockProductCode),
-				Validate.CheckQuantityValid,
+				Validate.CheckQuantityValid)(
 				new UnvalidatedOrderLine
 				{
 					Amount = 100m,
@@ -132,7 +134,7 @@ namespace DomainMadeFunctional.Core.Test
 		{
 			var validationResult = await Validate.CheckOrderLineValid(
 				Validate.CheckProductCodeExists(MockProductCode),
-				Validate.CheckQuantityValid,
+				Validate.CheckQuantityValid)(
 				new UnvalidatedOrderLine
 				{
 					Amount = 100.22m,
@@ -149,49 +151,49 @@ namespace DomainMadeFunctional.Core.Test
 		public void CheckQuantityValid_InvalidQuantityForWidgetCode_False()
 		{
 			var validationResult = Validate.CheckQuantityValid(
-				ProductCodeHelper.ToProductCode("W1234DKC").Data, 
+				ProductCodeHelper.ToProductCode("W1234DKC").Data,
 				100.21m);
-			
+
 			Assert.AreEqual(true, validationResult.Failure);
 		}
-		
+
 		[TestMethod]
 		public void CheckQuantityValid_InvalidQuantityNumberGreaterThan1000ForWidgetCode_False()
 		{
 			var validationResult = Validate.CheckQuantityValid(
-				ProductCodeHelper.ToProductCode("W1234DKC").Data, 
+				ProductCodeHelper.ToProductCode("W1234DKC").Data,
 				10000m);
-			
+
 			Assert.AreEqual(true, validationResult.Failure);
 		}
-		
+
 		[TestMethod]
 		public void CheckQuantityValid_InvalidQuantityNumberNegativeForWidgetCode_False()
 		{
 			var validationResult = Validate.CheckQuantityValid(
-				ProductCodeHelper.ToProductCode("W1234DKC").Data, 
+				ProductCodeHelper.ToProductCode("W1234DKC").Data,
 				-10m);
-			
+
 			Assert.AreEqual(true, validationResult.Failure);
 		}
-		
+
 		[TestMethod]
 		public void CheckQuantityValid_InvalidQuantityNumberGreaterThan1000ForGizmoCode_False()
 		{
 			var validationResult = Validate.CheckQuantityValid(
-				ProductCodeHelper.ToProductCode("G124KC").Data, 
+				ProductCodeHelper.ToProductCode("G124KC").Data,
 				10000m);
-			
+
 			Assert.AreEqual(true, validationResult.Failure);
 		}
-		
+
 		[TestMethod]
 		public void CheckQuantityValid_InvalidQuantityNumberNegativeForGizmoCode_False()
 		{
 			var validationResult = Validate.CheckQuantityValid(
-				ProductCodeHelper.ToProductCode("G124KC").Data, 
+				ProductCodeHelper.ToProductCode("G124KC").Data,
 				-10m);
-			
+
 			Assert.AreEqual(true, validationResult.Failure);
 		}
 

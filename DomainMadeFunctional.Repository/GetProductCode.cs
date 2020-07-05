@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using DomainMadeFunctional.OrderContext;
+using DomainMadeFunctional.OrderContext.Domain;
+using DomainMadeFunctional.OrderContext.Repository;
 using Huy.Framework.Types;
 
 namespace DomainMadeFunctional.Repository

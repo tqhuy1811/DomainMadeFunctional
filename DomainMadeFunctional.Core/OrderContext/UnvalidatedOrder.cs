@@ -1,4 +1,4 @@
-namespace DomainMadeFunctional
+namespace DomainMadeFunctional.OrderContext
 {
 	public class UnvalidatedOrder
 	{

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using DomainMadeFunctional.Errors;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional
+namespace DomainMadeFunctional.OrderContext.Domain
 {
 	public abstract class ProductCode: IEquatable<ProductCode>
 	{

@@ -1,8 +1,8 @@
-namespace DomainMadeFunctional
+namespace DomainMadeFunctional.OrderContext.Domain
 {
 	public class ValidatedOrderLine
 	{
-		internal ValidatedOrderLine(
+		public ValidatedOrderLine(
 			ProductCode productCode,
 			OrderQuantity orderQuantity)
 		{

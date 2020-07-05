@@ -1,10 +1,11 @@
 using System.Threading.Tasks;
 using DomainMadeFunctional.Errors;
-using DomainMadeFunctional.Validations;
+using DomainMadeFunctional.OrderContext.Domain;
+using DomainMadeFunctional.OrderContext.Validations;
 using Huy.Framework.Functions;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional.Helpers
+namespace DomainMadeFunctional.OrderContext.Helpers
 {
 	public static class AddressHelper
 	{

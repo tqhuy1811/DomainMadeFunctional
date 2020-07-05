@@ -1,7 +1,8 @@
 using DomainMadeFunctional.Errors;
+using DomainMadeFunctional.OrderContext.Domain;
 using Huy.Framework.Types;
 
-namespace DomainMadeFunctional.Helpers
+namespace DomainMadeFunctional.OrderContext.Helpers
 {
 	public static class ProductCodeHelper
 	{

@@ -1,4 +1,4 @@
-namespace DomainMadeFunctional.Events
+namespace DomainMadeFunctional.OrderContext.Events
 {
 	public class PlacedOrderEvents
 	{
