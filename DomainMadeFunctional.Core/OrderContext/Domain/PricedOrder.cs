@@ -6,20 +6,20 @@ namespace DomainMadeFunctional.OrderContext.Domain
 	public class PricedOrder
 	{
 		public PricedOrder(Guid id,
-			Guid customerId,
+			string customerName,
 			ValidatedAddress billingAddress,
 			ValidatedAddress shippingAddress,
 			PricedOrderLine[] orderLines)
 		{
 			Id = id;
-			CustomerId = customerId;
+			CustomerName = customerName;
 			BillingAddress = billingAddress;
 			ShippingAddress = shippingAddress;
 			OrderLines = orderLines;
 		}
 
 		public Guid Id { get; }
-		public Guid CustomerId { get; }
+		public string CustomerName { get; }
 		public ValidatedAddress BillingAddress { get; }
 		public ValidatedAddress ShippingAddress { get; }
 		public PricedOrderLine[] OrderLines { get; }
